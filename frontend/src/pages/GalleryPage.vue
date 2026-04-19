@@ -190,8 +190,8 @@ export default {
                 <input type="date" v-model="filters.dateTo" class="form-control filter-input">
             </div>
 
-            <button @click="applyFilters" class="btn-apply">Применить</button>
-            <button @click="resetFilters" class="btn-reset">Сбросить</button>
+            <button @click="applyFilters" class="btn btn-success">Применить</button>
+            <button @click="resetFilters" class="btn btn-danger">Сбросить</button>
         </div>
         <div v-if="!loading && !error">
             <MasonryWall :items="photos" :column-width="columnWidth" :gap="16">
@@ -362,6 +362,13 @@ export default {
     width: 3rem;
     height: 3rem;
     color: #F2ECDF !important;
+}
+
+.end-msg {
+    padding: 1em 2em;
+    border: 3px #F2ECDF solid;
+    border-radius: 1em;
+    background-color: #3F2B4C;
 }
 
 @media (max-width: 1200px) {

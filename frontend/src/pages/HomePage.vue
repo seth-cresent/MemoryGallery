@@ -1,14 +1,10 @@
 <script>
 import { RouterLink } from 'vue-router'
-import ButtonPrimary from '../components/ButtonPrimary.vue';
 export default {
     data() {
         return {
             image: "image.png"
         }
-    },
-    components: {
-        ButtonPrimary
     }
 }
 </script>
@@ -20,7 +16,7 @@ export default {
             <h1 className="title-text title-heading ">Музей Школы №30</h1>
             <span className="title-text">г.Новоалтайска</span>
             <RouterLink to="/gallery">
-                <button-primary msg="Начать исследование" />
+                <button class="title-button" :class="classes">Начать исследование</button>
             </RouterLink>
         </div>
     </div>
@@ -61,6 +57,20 @@ a {
     font-size: 6rem;
 }
 
+.title-button {
+    padding: 0.5em 3em;
+    background-color: #E0EDAB;
+    border: #3F2B4C 2px solid;
+    border-radius: 3em;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
 @media (max-width: 1200px) {
     .title-container {
         top: 15%;
@@ -70,6 +80,12 @@ a {
         gap: 1em;
         align-items: center;
         text-align: center;
+    }
+
+    .title-button {
+        margin-top: 1em;
+        padding: 0.5em 1.5em;
+        margin-left: 0;
     }
 
     .title-text {

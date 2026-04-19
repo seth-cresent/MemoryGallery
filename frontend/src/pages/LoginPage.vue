@@ -2,6 +2,8 @@
 import api from '@/api';
 import EyeIcon from '../assets/icons/eye.svg?component'
 import EyeClosed from '../assets/icons/eye-closed.svg?component'
+import FailIcon from '../assets/icons/delete.svg?component'
+import SuccessIcon from '../assets/icons/check-mark.svg?component'
 
 export default {
     name: 'LoginPage',
@@ -94,7 +96,9 @@ export default {
     },
     components: {
         EyeIcon,
-        EyeClosed
+        EyeClosed,
+        FailIcon,
+        SuccessIcon
     }
 };
 </script>
@@ -149,7 +153,8 @@ export default {
                         </div>
                         <div v-if="!isInitialized && password.length > 0" class="mt-2 password-hints">
                             <small :class="passwordValidation.valid ? 'text-success' : 'text-muted'">
-                                {{ passwordValidation.valid ? '✅ Пароль надежен' : '❌ Минимум 8 симв., цифра и заглавная' }}
+                                <span v-if="passwordValidation.valid"><success-icon width="1.5em" height="autho" /> Пароль надежен</span>
+                                <span v-else><fail-icon width="1.5em" height="autho" /> Минимум 8 лат. симв., цифра и заглавная</span>
                             </small>
                         </div>
                     </div>

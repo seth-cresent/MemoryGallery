@@ -7,6 +7,7 @@ import AddAccount from '../assets/icons/add-account.svg?component'
 import AccountIcon from '../assets/icons/account.svg?component'
 import DoorExit from '../assets/icons/door-exit.svg?component'
 import TrashBin from '../assets/icons/trash-bin.svg?component'
+import SuccessIcon from '../assets/icons/check-mark.svg?component'
 
 export default {
     data() {
@@ -271,7 +272,8 @@ export default {
         AddAccount,
         AccountIcon,
         DoorExit,
-        TrashBin
+        TrashBin,
+        SuccessIcon
     }
 }
 </script>
@@ -298,12 +300,12 @@ export default {
         <!-- Форма ДОБАВЛЕНИЯ -->
         <div v-if="currentAction === 'add'" class="admin-card p-4 col-12 col-md-6">
             <h3>Загрузка нового фото</h3>
-            <div class="drop-zone mb-3" @dragover.prevent @drop.prevent="handleDrop" :class="{ 'dragging': isDragging }"
+            <div class="drop-zone mb-3" @click="$refs.fileInput.click()" @dragover.prevent @drop.prevent="handleDrop" :class="{ 'dragging': isDragging }"
                 @dragenter="isDragging = true" @dragleave="isDragging = false">
                 <input type="file" @change="handleFileSelect" hidden ref="fileInput">
-                <p v-if="!uploadForm.file" @click="$refs.fileInput.click()">Перетащите фото сюда или нажмите для выбора
+                <p v-if="!uploadForm.file">Перетащите фото сюда или нажмите для выбора
                 </p>
-                <p v-else class="text-success">✅ {{ uploadForm.file.name }}</p>
+                <p v-else class="text-success d-flex align-items-center justify-content-center gap-2"><success-icon width="1.5em" height="autho" /> {{ uploadForm.file.name }}</p>
             </div>
 
             <div class="mb-3">
